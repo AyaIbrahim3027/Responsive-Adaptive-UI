@@ -39,7 +39,11 @@ class IncomeSectionHeader extends StatelessWidget {
               ),
               Transform.rotate(
                 angle: -1.57079633,
-                child: const Icon(Icons.arrow_back_ios_new),),
+                child: const Icon(
+                  Icons.arrow_back_ios_new,
+                  color: Color(0xff064061),
+                ),
+              ),
             ],
           ),
         ),
