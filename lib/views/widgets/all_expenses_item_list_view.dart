@@ -6,13 +6,12 @@ import 'package:responsive_dashboard/views/widgets/all_expenses_item.dart';
 class AllExpensesItemListView extends StatefulWidget {
   const AllExpensesItemListView({super.key});
 
-
   @override
-  State<AllExpensesItemListView> createState() => _AllExpensesItemListViewState();
+  State<AllExpensesItemListView> createState() =>
+      _AllExpensesItemListViewState();
 }
 
 class _AllExpensesItemListViewState extends State<AllExpensesItemListView> {
-
   final items = [
     const AllExpensesItemModel(
       image: Assets.imagesBalance,
@@ -36,44 +35,90 @@ class _AllExpensesItemListViewState extends State<AllExpensesItemListView> {
 
   int selectedIndex = 0;
 
-
   @override
   Widget build(BuildContext context) {
     return Row(
-      // children: items.map((e) => Expanded(child: AllExpensesItem(allExpensesItemModel: e))).toList(),
-      children: items.asMap().entries.map((e) {
-        int index = e.key;
-        var item = e.value;
-        if (index == 1) {
-          return Expanded(
-            child: GestureDetector(
-              onTap: (){
-                updateIndex(index);
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: AllExpensesItem(
-                  allExpensesItemModel: item,
-                  isSelected: selectedIndex == index,
-                ),
-              ),
+      children: [
+        Expanded(
+          child: GestureDetector(
+            onTap: () {
+              updateIndex(0);
+            },
+            child: AllExpensesItem(
+              allExpensesItemModel: items[0],
+              isSelected: selectedIndex == 0,
             ),
-          );
-        } else {
-          return Expanded(
-            child: GestureDetector(
-              onTap: (){
-                updateIndex(index);
-              },
-              child: AllExpensesItem(
-              allExpensesItemModel: item,
-              isSelected: selectedIndex == index,
+          ),
+        ),
+        const SizedBox(
+          width: 8,
+        ),
+        Expanded(
+          child: GestureDetector(
+            onTap: () {
+              updateIndex(1);
+            },
+            child: AllExpensesItem(
+              allExpensesItemModel: items[1],
+              isSelected: selectedIndex == 1,
             ),
+          ),
+        ),
+        const SizedBox(
+          width: 8,
+        ),
+        Expanded(
+          child: GestureDetector(
+            onTap: () {
+              updateIndex(2);
+            },
+            child: AllExpensesItem(
+              allExpensesItemModel: items[2],
+              isSelected: selectedIndex == 2,
             ),
-          );
-        }
-      }).toList(),
+          ),
+        ),
+      ],
     );
+    // return Row(
+    //   // children: items.map((e) => Expanded(child: AllExpensesItem(allExpensesItemModel: e))).toList(),
+    //   children: items.asMap().entries.map((e) {
+    //     int index = e.key;
+    //     var item = e.value;
+    //     // if (index == 1) {
+    //     //   return Expanded(
+    //     //     child: GestureDetector(
+    //     //       onTap: () {
+    //     //         updateIndex(index);
+    //     //       },
+    //     //       child: Padding(
+    //     //         padding: EdgeInsets.symmetric(horizontal: index == 1 ? 12 : 0),
+    //     //         child: AllExpensesItem(
+    //     //           allExpensesItemModel: item,
+    //     //           isSelected: selectedIndex == index,
+    //     //         ),
+    //     //       ),
+    //     //     ),
+    //     //   );
+    //     // } else {
+    //     return Expanded(
+    //       child: GestureDetector(
+    //         onTap: () {
+    //           updateIndex(index);
+    //         },
+    //         child: Padding(
+    //           padding: EdgeInsets.symmetric(horizontal: index == 1 ? 12 : 0),
+    //           child: AllExpensesItem(
+    //             allExpensesItemModel: item,
+    //             isSelected: selectedIndex == index,
+    //           ),
+    //         ),
+    //       ),
+    //     );
+    //   }
+    //       // }
+    //       ).toList(),
+    // );
     // return ListView.builder(
     //     scrollDirection: Axis.horizontal,
     //     itemCount: items.length,
